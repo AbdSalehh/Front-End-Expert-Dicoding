@@ -11,28 +11,27 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
     clean: true,
-  },
-  module: {
+  }, module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
         ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         dependency: { not: ['url'] },
-        type: 'asset/resource',
+        // type: 'asset/resource',
         use: [
           {
             loader: 'file-loader',
-          }, 
+          },
         ],
         type: 'javascript/auto',
       },

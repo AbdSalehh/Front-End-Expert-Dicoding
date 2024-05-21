@@ -2,7 +2,7 @@ import '../components/restaurantList.js'
 import resto from '../../public/data/DATA.json'
 
 const main = () => {
-    const hamburgerButtonElement = document.querySelector("#hamburger");
+    const hamburgerButtonElement = document.querySelector("#hamburgerButton");
     const drawerElement = document.querySelector("#navigation");
     const restaurantList = document.querySelector("restaurant-list");
 

@@ -16,7 +16,7 @@ class headerBar extends HTMLElement {
                     <li><a href="https://github.com/AbdSalehh/">About Us</a></li>
                 </ul>
             </nav>
-            <button type="button" id="hamburger" aria-label="navigation-menu" tabindex="0">☰</button>
+            <button type="button" id="hamburgerButton" aria-label="navigation-menu" tabindex="0">☰</button>
         `;
     }
 }

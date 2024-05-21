@@ -1,7 +1,6 @@
-import 'regenerator-runtime'; /* for async await transpile */
-import "@fortawesome/fontawesome-free/css/all.css";
-import '../styles/main.css';
-import '../styles/responsive.css';
+import 'regenerator-runtime';
+import '../styles/main.scss';
+import '../styles/responsive.scss';
 import '../scripts/components/heroElement.js';
 import '../scripts/components/skipToMainContent.js';
 import '../scripts/components/headerBar.js';
