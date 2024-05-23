@@ -1,38 +1,34 @@
-import "./restaurantItem.js"
-
 class restaurantList extends HTMLElement {
-    /**
-     * @param {any} restaurants
-     */
-    set restaurants(restaurants) {
-        this._restaurants = restaurants;
+    connectedCallback() {
         this.render();
-        this.fetchAndRenderData();
-    }
-
-    fetchAndRenderData() {
-        const regularRestaurantsContainer = this.querySelector('.restaurants');
-        const popularRestaurantsContainer = this.querySelector('.popular-restaurants');
-
-        this._restaurants.restaurants.forEach(restaurant => {
-            const restaurantItem = document.createElement('restaurant-item');
-            restaurantItem.restaurant = restaurant;
-
-            if (restaurant.rating > 4.6) {
-                popularRestaurantsContainer.appendChild(restaurantItem);
-            } else {
-                regularRestaurantsContainer.appendChild(restaurantItem);
-            }
-        });
     }
 
     render() {
         this.innerHTML = `
             <div class="content">
-                <h1 class="content__label" id="main-content">Explore Restaurants</h1>
+                <div class="explore-restaurant">
+                    <h1 class="content__label" id="main-content">Explore Restaurants</h1>
+                    <div class="filter-wrapper">
+                        <search-filter></search-filter>
+                    </div>   
+                </div>
                 <div class="restaurants"></div>
-                <h1 class="content__label popular" id="main-content">Popular Restaurants</h1>
+                <div class="our-menu">
+                    <h1 class="content__label menu" id="main-content">Our Menu</h1>
+                    <div class="menu-list">
+                        <menu-item title="Seafoods" description="Savor fresh fish, shrimp, and lobster cooked to perfection daily." image="/images/menus/seafoods.jpg"></menu-item>
+                        <menu-item title="Japanese Foods" description="Enjoy delicious sushi, sashimi, and tempura with authentic Japanese flavors." image="/images/menus/japan-foods.jpg"></menu-item>
+                        <menu-item title="Drinks" description="Refresh with our variety of smoothies, juices, and iced teas." image="/images/menus/drinks.jpg"></menu-item>
+                    </div>
+                </div>
+                <h1 class="content__label popular" id="popular-content">Popular Restaurants</h1>
                 <div class="popular-restaurants"></div>
+                <div class="customers-experience">
+                    <h1 class="content__label customers" id="popular-content">Customers Experience</h1>
+                    <div class="wrapper">
+                        <customers-experience></customers-experience>
+                    </div>
+                </div>
             </div>
         `;
     }

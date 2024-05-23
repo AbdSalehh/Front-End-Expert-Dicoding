@@ -10,10 +10,10 @@ class headerBar extends HTMLElement {
                 <p class="name">Hunger Apps</p>
             </a>
             <nav>
-                <ul id="navigation" class="nav-list">
+                <ul id="navigationDrawer" class="nav-list">
                     <li><a href="">Home</a></li>
-                    <li><a href="#">Favorite</a></li>
-                    <li><a href="https://github.com/AbdSalehh/">About Us</a></li>
+                    <li><a href="#/favorite">Favorite</a></li>
+                    <li><a href="https://www.linkedin.com/in/abdsaleh/" target="_blank">About Us</a></li>
                 </ul>
             </nav>
             <button type="button" id="hamburgerButton" aria-label="navigation-menu" tabindex="0">☰</button>
@@ -21,4 +21,4 @@ class headerBar extends HTMLElement {
     }
 }
 
-customElements.define("header-bar", headerBar);
+customElements.define('header-bar', headerBar);
