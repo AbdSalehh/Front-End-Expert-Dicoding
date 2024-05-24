@@ -14,10 +14,15 @@ const Home = {
         const popularRestoList = document.querySelector('.popular-restaurants');
         const searchInput = document.querySelector('#searchInput');
         const filterOptions = document.querySelector('#filterOptions');
+        const skipLink = document.querySelector('.skip-link');
+        const mainContent = document.querySelector('#main-content');
 
         const main = document.querySelector('main');
         const hero = document.querySelector('hero-bar');
         const loader = document.querySelector('loader-component');
+
+        mainContent.setAttribute('tabindex', '-1');
+        skipLink.setAttribute('href', '#main-content');
 
         main.style.display = 'none';
         hero.style.display = 'none';
