@@ -27,8 +27,7 @@ function displayRestaurants(restaurants, restoList) {
     } else {
         let restoIndex = 0;
         restaurants.forEach((restaurant, index) => {
-            const delay = (restoIndex * 50) + 100;
-            const template = createRestaurantListTemplate(restaurant, delay);
+            const template = createRestaurantListTemplate(restaurant);
             restoList.insertAdjacentHTML('beforeend', template);
             restoIndex++;
         });

@@ -13,9 +13,8 @@ const createRestaurantDetailTemplate = (restaurant) => `
                 </div>
                 <picture>
                     <source class="lazyload" media="(max-width: 600px)" srcset="${CONFIG.BASE_IMAGE_URL + small + restaurant.pictureId}">
-                    <source class="lazyload" media="(max-width: 1200px)" srcset="${CONFIG.BASE_IMAGE_URL + medium + restaurant.pictureId}">
                     <img class="lazyload"
-                        src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + large + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="Restoran ${restaurant.name || '-'} Kota ${restaurant.city}">
+                        src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + medium + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="Restoran ${restaurant.name || '-'} Kota ${restaurant.city}">
                 </picture>
             </div>
             <div class="restaurant_detail">
@@ -68,16 +67,12 @@ const createRestaurantDetailTemplate = (restaurant) => `
     </div>
 `;
 
-const createRestaurantListTemplate = (restaurant, aosDelay) => `
-    <article class="restaurant-item" key="${restaurant.id}" data-aos="fade-up" data-aos-easing="linear"
-    data-aos-duration="300"
-    data-aos-delay="${aosDelay}"
-    >
+const createRestaurantListTemplate = (restaurant) => `
+    <article class="restaurant-item" key="${restaurant.id}">
         <p class="restaurant-item__location">Kota. ${restaurant.city || '-'}</p>
         <picture>
             <source class="lazyload" media="(max-width: 600px)" srcset="${CONFIG.BASE_IMAGE_URL + small + restaurant.pictureId}">
-            <source class="lazyload" media="(max-width: 1200px)" srcset="${CONFIG.BASE_IMAGE_URL + medium + restaurant.pictureId}">
-            <img class="restaurant-item__thumbnail lazyload" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + large + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="Restoran ${restaurant.name || '-'} Kota ${restaurant.city}">
+            <img class="restaurant-item__thumbnail lazyload" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + medium + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="Restoran ${restaurant.name || '-'} Kota ${restaurant.city}">
         </picture>
         <div class="restaurant-item__content">
             <div class="restaurant-item__name">
