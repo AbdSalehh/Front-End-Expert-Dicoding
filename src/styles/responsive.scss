@@ -1,4 +1,7 @@
 @media screen and (max-width: 1160px) {
+	.hero {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../public/images/heros/hero-image_1-large.jpg") no-repeat center center;
+	}
     .restaurant_img {
         width: 50%;
         max-height: 380px;
@@ -66,10 +69,13 @@
 		.explore-restaurant {
 			flex-direction: column;
 			justify-content: center;
-			search-filter {
+			.filter-wrapper, search-filter {
 				display: flex;
 				align-items: center;
 				margin-top: 20px;
+			}
+			search-filter {
+				margin-top: 0;
 			}
 		}
 		.content__label {
@@ -161,6 +167,10 @@
 }
 
 @media screen and (max-width: 595px) {
+	.hero {
+        background-image: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url("../public/images/heros/hero-image_1-small.jpg") no-repeat center center;
+    }
+
 	.popular-restaurants {
 		gap: 20px;
 		.restaurant-item {
@@ -174,14 +184,18 @@
 			.restaurant-item__name {
 				flex-direction: column;
 			}
-			img, .restaurant-item__content  {
+			.restaurant-item__content  {
 				width: 100%;
 			}
-			img {
-				height: 200px;
-				border-radius: 0;
-				border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
+			picture {
+				width: 100%;
+				img.restaurant-item__thumbnail {
+					width: 100% !important;
+					height: 200px !important;
+					border-radius: 0;
+					border-top-left-radius: 5px;
+					border-top-right-radius: 5px;
+				}
 			}
 			.restaurant-item__content {
 				padding: 16px;

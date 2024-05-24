@@ -26,6 +26,14 @@
         "no-promise-executor-return": "off",
         "no-plusplus": "off",
         "default-case": "off",
-        "no-unused-expressions": "off"
+        "no-unused-expressions": "off",
+        "no-undef": "off",
+        "import/prefer-default-export": "off",
+        "consistent-return": "off",
+        "no-prototype-builtins": "off",
+        "no-return-assign": "off",
+        "eqeqeq": "off",
+        "class-methods-use-this": "off",
+        "no-new": "off"
     }
 }

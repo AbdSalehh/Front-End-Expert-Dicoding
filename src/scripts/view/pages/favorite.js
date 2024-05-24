@@ -1,57 +1,42 @@
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb.js';
 import { displayRestaurants, filterRestaurants } from '../../utils/filter-restaurants.js';
+import FavoriteRestaurantSearchView from './liked-restaurants/favorite-restaurant-search-view.js';
+import FavoriteRestaurantShowPresenter from './liked-restaurants/favorite-restaurant-show-presenter.js';
+import FavoriteRestaurantSearchPresenter from './liked-restaurants/favorite-restaurant-search-presenter.js';
+
+const view = new FavoriteRestaurantSearchView();
 
 const Favorite = {
     async render() {
-        return `
-            <restaurant-list></restaurant-list>
-        `;
+        return view.getTemplate();
     },
 
     async afterRender() {
         const restaurants = await FavoriteRestaurantIdb.getAllRestaurant();
-        const restoList = document.querySelector('.restaurants');
-        const popularTitle = document.querySelector('#popular-content');
-        const popularRestoList = document.querySelector('.popular-restaurants');
         const hero = document.querySelector('hero-bar');
-        const contentLabel = document.querySelector('.content__label');
         const skipLink = document.querySelector('skip-to-content>a');
         const content = document.querySelector('.content');
         const mainContent = document.querySelector('#main-content');
         const loader = document.querySelector('loader-component');
-        const ourMenu = document.querySelector('.our-menu');
-        const customersExperience = document.querySelector('.customers-experience');
-        const searchInput = document.querySelector('#searchInput');
-        const filterOptions = document.querySelector('#filterOptions');
+        const restaurantNotFound = document.querySelector('.restaurant-not-found');
 
         window.scrollTo(0, 0);
         mainContent.setAttribute('tabindex', '-1');
         skipLink.setAttribute('href', '#main-content');
 
-        popularTitle.style.display = 'none';
-        popularRestoList.style.display = 'none';
-        ourMenu.style.display = 'none';
-        customersExperience.style.display = 'none';
         hero.style.display = 'none';
         loader.style.display = 'flex';
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
         content.style.marginTop = '110px';
-        contentLabel.textContent = 'Favorite Restaurants';
 
-        const filterAndUpdateUI = () => {
-            const filteredRestaurants = filterRestaurants(restaurants, searchInput.value, filterOptions.value);
-            displayRestaurants(filteredRestaurants, restoList);
-        };
-
-        searchInput.addEventListener('input', filterAndUpdateUI);
-        filterOptions.addEventListener('change', filterAndUpdateUI);
-
-        displayRestaurants(restaurants, restoList);
+        new FavoriteRestaurantShowPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
+        new FavoriteRestaurantSearchPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
 
         loader.style.display = 'none';
 
+        content.style.minHeight = '80vh';
         restaurants.length === 0 ? (content.style.height = '100vh') : content.style.height = 'auto';
     },
 };

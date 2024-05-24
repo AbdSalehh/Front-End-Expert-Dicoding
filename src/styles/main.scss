@@ -116,7 +116,7 @@ header {
 	min-height: 500px;
 	width: 100%;
 	text-align: center;
-	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("../public/images/heros/hero-image_1.jpg");
+	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("../public/images/heros/hero-image_1-max.jpg");
 	background-position: center;
 	margin-top: 60px;
 	.hero__desc {
@@ -169,7 +169,7 @@ header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		search-filter {
+		.filter-wrapper, search-filter {
 			display: flex;
 			align-items: center;
 			gap: 5px;
@@ -442,14 +442,18 @@ header {
 				border-radius: 3px 0 0 3px;
 			}
 		}
-		img {
-			object-fit: cover;
-			border-radius: 5px;
-			width: 48.8%;
+		picture {
+			width: 50%;
+			img.restaurant-item__thumbnail {
+				object-fit: cover;
+				border-radius: 5px;
+				width: 100% !important;
+				height: 100% !important;
+			}
 		}
 		.restaurant-item__content {
 			text-align: justify !important;
-			width: 51.2%;
+			width: 50%;
 		}
 		.restaurant-item__content {
 			i {
@@ -832,7 +836,7 @@ header {
 	align-items: center;
 	font-family: 'Inter', sans-serif;
 	.error-page__title {
-		background: url('../public/images/heros/hero-image_4.jpg') no-repeat center center;
+		background: url('../public/images/resto.jpg') no-repeat center center;
 		background-size: cover;
 		-webkit-background-clip: text;
 		color: transparent;

@@ -1,5 +1,9 @@
 import CONFIG from '../../globals/config.js';
 
+const small = 'small/';
+const medium = 'medium/';
+const large = 'large/';
+
 const createRestaurantDetailTemplate = (restaurant) => `
     <div class="detail">
         <div class="restaurant_item">
@@ -7,7 +11,12 @@ const createRestaurantDetailTemplate = (restaurant) => `
                 <div class="button">
                     <div class="like_button"></div>
                 </div>
-                <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="Restaurant Image">
+                <picture>
+                    <source class="lazyload" media="(max-width: 600px)" srcset="${CONFIG.BASE_IMAGE_URL + small + restaurant.pictureId}">
+                    <source class="lazyload" media="(max-width: 1200px)" srcset="${CONFIG.BASE_IMAGE_URL + medium + restaurant.pictureId}">
+                    <img class="lazyload"
+                        src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + large + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="Restoran ${restaurant.name || '-'} Kota ${restaurant.city}">
+                </picture>
             </div>
             <div class="restaurant_detail">
                 <div class="restaurant_name">${restaurant.name}</div>
@@ -64,27 +73,31 @@ const createRestaurantListTemplate = (restaurant, aosDelay) => `
     data-aos-duration="300"
     data-aos-delay="${aosDelay}"
     >
-        <p class="restaurant-item__location">Kota. ${restaurant.city}</p>
-        <img class="restaurant-item__thumbnail" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="Restoran ${restaurant.name} Kota ${restaurant.city}">
+        <p class="restaurant-item__location">Kota. ${restaurant.city || '-'}</p>
+        <picture>
+            <source class="lazyload" media="(max-width: 600px)" srcset="${CONFIG.BASE_IMAGE_URL + small + restaurant.pictureId}">
+            <source class="lazyload" media="(max-width: 1200px)" srcset="${CONFIG.BASE_IMAGE_URL + medium + restaurant.pictureId}">
+            <img class="restaurant-item__thumbnail lazyload" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + large + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="Restoran ${restaurant.name || '-'} Kota ${restaurant.city}">
+        </picture>
         <div class="restaurant-item__content">
             <div class="restaurant-item__name">
-                <p class="restaurant-item__rating">Rating : <i class="fa-solid fa-star"></i><span>${restaurant.rating}</span></p>
-                <h1 class="restaurant-item__title">${restaurant.name}</h1>
+                <p class="restaurant-item__rating">Rating : <i class="fa-solid fa-star"></i><span>${restaurant.rating || '-'}</span></p>
+                <h1 class="restaurant-item__title">${restaurant.name || '-'}</h1>
             </div>
-            <p class="restaurant-item__description">${restaurant.description}</p>
-            <a class="restaurant-item__link" href="/#/detail/${restaurant.id}" aria-label="Lihat Restoran ${restaurant.name}">Lihat Restoran</a>
+            <p class="restaurant-item__description">${restaurant.description || '-'}</p>
+            <a class="restaurant-item__link" href="/#/detail/${restaurant.id}" aria-label="Lihat Restoran ${restaurant.name || '-'}">Lihat Restoran</a>
         </div>
     </article>
 `;
 
 const createLikeButtonTemplate = () => `
-    <button aria-label="unlike this movie" id="likeButton" class="like">
+    <button aria-label="like this restaurant" id="likeButton" class="like">
         <i class="fa fa-heart" aria-hidden="true"></i>
     </button>
 `;
 
 const createLikedButtonTemplate = () => `
-    <button aria-label="unlike this movie" id="likeButton" class="like red">
+    <button aria-label="unlike this restaurant" id="likeButton" class="like red">
         <i class="fa fa-heart" aria-hidden="true"></i>
     </button>
 `;
