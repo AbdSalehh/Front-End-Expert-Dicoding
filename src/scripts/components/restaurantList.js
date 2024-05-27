@@ -1,3 +1,5 @@
+import { createSkeletonRestaurantTemplate } from '../view/templates/template-creator';
+
 class restaurantList extends HTMLElement {
     connectedCallback() {
         this.render();
@@ -12,7 +14,9 @@ class restaurantList extends HTMLElement {
                         <search-filter></search-filter>
                     </div>   
                 </div>
-                <div class="restaurants"></div>
+                <div class="restaurants">
+                    ${createSkeletonRestaurantTemplate(10)}
+                </div>
                 <div class="our-menu">
                     <h1 class="content__label menu" id="main-content">Our Menu</h1>
                     <div class="menu-list">
@@ -22,7 +26,9 @@ class restaurantList extends HTMLElement {
                     </div>
                 </div>
                 <h1 class="content__label popular" id="popular-content">Popular Restaurants</h1>
-                <div class="popular-restaurants"></div>
+                <div class="popular-restaurants">
+                    ${createSkeletonRestaurantTemplate(3)}
+                </div>
                 <div class="customers-experience">
                     <h1 class="content__label customers" id="popular-content">Customers Experience</h1>
                     <div class="wrapper">

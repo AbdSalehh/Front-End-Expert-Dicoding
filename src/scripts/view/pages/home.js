@@ -30,16 +30,20 @@ const Home = {
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        const filterAndUpdateUI = () => {
-            const filteredRestaurants = filterRestaurants(restaurants, searchInput.value, filterOptions.value);
-            displayRestaurants(filteredRestaurants, restoList);
-        };
+        if (!restaurants) {
+            console.log(restaurants);
+        } else {
+            const filterAndUpdateUI = () => {
+                const filteredRestaurants = filterRestaurants(restaurants, searchInput.value, filterOptions.value);
+                displayRestaurants(filteredRestaurants, restoList);
+            };
 
-        searchInput.addEventListener('input', filterAndUpdateUI);
-        filterOptions.addEventListener('change', filterAndUpdateUI);
+            searchInput.addEventListener('input', filterAndUpdateUI);
+            filterOptions.addEventListener('change', filterAndUpdateUI);
 
-        displayRestaurants(restaurants, restoList);
-        displayRestaurants(restaurants.filter((restaurant) => restaurant.rating >= 4.8), popularRestoList);
+            displayRestaurants(restaurants, restoList);
+            displayRestaurants(restaurants.filter((restaurant) => restaurant.rating >= 4.8), popularRestoList);
+        }
 
         loader.style.display = 'none';
         main.style.display = 'block';

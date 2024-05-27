@@ -1,4 +1,4 @@
-import { createRestaurantListTemplate } from '../../templates/template-creator.js';
+import { createSkeletonRestaurantTemplate, createRestaurantListTemplate } from '../../templates/template-creator.js';
 
 class FavoriteRestaurantSearchView {
     getTemplate() {
@@ -13,7 +13,9 @@ class FavoriteRestaurantSearchView {
                         </div>
                     </div>   
                 </div>
-                <div class="restaurants" id="restaurants"></div>
+                <div class="restaurants" id="restaurants">
+                    ${createSkeletonRestaurantTemplate(3)}
+                </div>
             </div>
         `;
     }

@@ -18,7 +18,6 @@ const Favorite = {
         const content = document.querySelector('.content');
         const mainContent = document.querySelector('#main-content');
         const loader = document.querySelector('loader-component');
-        const restaurantNotFound = document.querySelector('.restaurant-not-found');
 
         window.scrollTo(0, 0);
         mainContent.setAttribute('tabindex', '-1');
@@ -31,8 +30,12 @@ const Favorite = {
 
         content.style.marginTop = '110px';
 
-        new FavoriteRestaurantShowPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
-        new FavoriteRestaurantSearchPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
+        if (!restaurants) {
+            console.log(restaurants);
+        } else {
+            new FavoriteRestaurantShowPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
+            new FavoriteRestaurantSearchPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
+        }
 
         loader.style.display = 'none';
 
